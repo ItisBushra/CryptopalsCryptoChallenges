@@ -27,28 +27,28 @@ const Frequencies = {
 };
 const letters = [
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
-    "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+    "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
 ];
 
 XOR("1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736", letters);
 
-function XOR(hexString, letters) {
+ function XOR(hexString) { 
     for (var j = 0; j < letters.length; j++) {
         var string1 = "";
 
-        for (var i = 0; i < 34; i++) {
+        for (var i = 0; i < (hexString.length)/2 ; i++) {
             string1 += letters[j];
         }
         var hexString1 = Buffer.from(string1).toString('hex');
         const buf2 = Buffer.from(hexString1, 'hex');
         const buf1 = Buffer.from(hexString, 'hex');
         const bufResult = buf1.map((b, i) => b ^ buf2[i])
-
-        FrequencyCalculater(bufResult.toString("hex"));
+        FrequencyCalculater(bufResult.toString("hex"), letters[j]);
     }
 }
 
-function FrequencyCalculater(hexOutputString) {
+function FrequencyCalculater(hexOutputString, key) { 
     var str = '';
     var freqValue = 0;
     for (var i = 0; i < hexOutputString.length; i += 2)
@@ -61,5 +61,20 @@ function FrequencyCalculater(hexOutputString) {
             freqValue += Frequencies[upperCaseStr[i]];
         }
     }
-    console.log("string: " + str + " frequency value: " + freqValue);
+    if (freqValue > 110)
+        console.log("string: ", str, "Key is: ", key,"\n");
+
 }
+
+//set1 challenge4
+var fs = require('fs');
+fs.readFile('challenge_4.txt', 'utf8', function (err, data) {
+    if (err) {
+        return console.log(err);
+    }
+    const lines = data.split(/\r?\n/);
+    for (var i = 0; i < lines.length; i++) {
+       XOR(lines[i]);
+}
+
+});
