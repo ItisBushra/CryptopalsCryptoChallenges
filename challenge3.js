@@ -13,21 +13,20 @@ const letters = [
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
 ];
 
-console.log(XORHEX("1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736", letters));
+XORHEX("1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736", letters);
+
 function XORHEX(hexString, keyLetters) {
     for (var j = 0; j < keyLetters.length; j++) {
         var string1 = "";
 
         for (var i = 0; i < (hexString.length) / 2; i++) {
-            for (var i = 0; i < (hexString.length) / 2; i++) {
-                string1 += keyLetters[j];
-            }
-            var hexString1 = Buffer.from(string1).toString('hex');
-            const buf2 = Buffer.from(hexString1, 'hex');
-            const buf1 = Buffer.from(hexString, 'hex');
-            const bufResult = buf1.map((b, i) => b ^ buf2[i])
-            FrequencyCalculater(bufResult.toString("hex"), keyLetters[j]);
+            string1 += keyLetters[j];
         }
+        var hexString1 = Buffer.from(string1).toString('hex');
+        const buf2 = Buffer.from(hexString1, 'hex');
+        const buf1 = Buffer.from(hexString, 'hex');
+        const bufResult = buf1.map((b, i) => b ^ buf2[i])
+        FrequencyCalculater(bufResult.toString("hex"), keyLetters[j]);
     }
 }
 
