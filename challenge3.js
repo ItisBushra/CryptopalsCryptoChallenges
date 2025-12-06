@@ -12,9 +12,9 @@ const letters = [
     "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
 ];
-
-XORHEX("1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736", letters);
-
+if (require.main === module) {
+    XORHEX("1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736", letters);
+}
 function XORHEX(hexString, keyLetters) {
     for (var j = 0; j < keyLetters.length; j++) {
         var string1 = "";
@@ -47,3 +47,8 @@ function FrequencyCalculater(hexOutputString, key) {
         console.log("string: ", str, "Key is: ", key, "\n");
 
 }
+
+module.exports = {
+    XORHEX,
+    FrequencyCalculater
+};
