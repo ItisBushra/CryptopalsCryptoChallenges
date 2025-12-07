@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^9.36.0"
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0"
   }
 }
