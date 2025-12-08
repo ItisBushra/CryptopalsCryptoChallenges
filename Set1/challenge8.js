@@ -2,7 +2,7 @@
 var fs = require('fs');
 const CryptoJS = require("crypto-js");
 
-fs.readFile('challenge_8.txt', 'utf8', function (err, data) {
+fs.readFile('./Set1/challenge_8.txt', 'utf8', function (err, data) {
     if (err) {
         return console.log(err);
     }

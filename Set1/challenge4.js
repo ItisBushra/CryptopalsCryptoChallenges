@@ -1,5 +1,5 @@
 'use strict';
-const { XORHEX } = require("./challenge3.js");
+const { XORHEX } = require("./Set1/challenge3.js");
 
 const letters = [
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",

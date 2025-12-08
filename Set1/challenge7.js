@@ -3,7 +3,7 @@ var fs = require('fs');
 const KEY = "YELLOW SUBMARINE";
 const CryptoJS = require("crypto-js");
 
-fs.readFile('challenge_7.txt', 'utf8', function (err, data) {
+fs.readFile('./Set1/challenge_7.txt', 'utf8', function (err, data) {
     if (err) {
         return console.log(err);
     }

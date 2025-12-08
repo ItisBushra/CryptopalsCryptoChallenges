@@ -44,7 +44,7 @@ function FrequencyCalculater(asciiString) {
 }
 
 let KEYSIZE = Array.from({ length: 39 }, (e, i) => 2 + i * 1);
-BreakCipher(KEYSIZE, "challenge_6.txt");
+BreakCipher(KEYSIZE, "./Set1/challenge_6.txt");
 function BreakCipher(KEYSIZE, fileName) {
     fs.readFile(fileName, 'utf8', function (err, data) {
         let element = [];
