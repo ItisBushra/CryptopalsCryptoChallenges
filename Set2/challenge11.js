@@ -25,7 +25,6 @@ function randomOracle(asciiInput, Key = KEY, Iv = IV) {
     WholeInput.set(new Uint8Array(append), plainTextBuffer.byteLength + prepend.byteLength);
     var AESkey = CryptoJS.enc.Utf8.parse(Key);
     var result = "";
-
     if (modeIs == "0") {
         //ECB     
         var hexWholeInput = Buffer.from(WholeInput).toString("hex");
@@ -59,8 +58,11 @@ function detectMode(plainInput) {
     for (var d = 0; d < originalCipherBytes.length; d++) {
        var Array1 = originalCipherBytes[d];
        var Array2 = originalCipherBytes[d + 16];
-       if (Array1 != Array2) continue;
-       if (Array1 == Array2) {
+        if (Array1 != Array2) {
+            count = 0;
+            continue;
+        }
+        if (Array1 == Array2) {
            count++;
        }
        if (count == 16) break outerLoop;
