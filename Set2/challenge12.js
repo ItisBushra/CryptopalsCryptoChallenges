@@ -70,7 +70,8 @@ function detectMode(BLOCKLEN) {
     return mode;
 }
 
-decryptTarget(TARGETLEN, BLOCKLEN);
+var result = decryptTarget(TARGETLEN, BLOCKLEN);
+console.log(result);
 
 function decryptTarget(targetLength, targetblockLength) {
     var knownBytes = [];
@@ -81,7 +82,6 @@ function decryptTarget(targetLength, targetblockLength) {
     }
     else {
         var padding = TARGETCOMPLETELEN - TARGETLEN;
-        //terminates at 7th block 4th byte
         for (var i = 0; i < targetLength; i++) {
             var targetBlockIndex = Math.floor(i / BLOCKLEN);
             var craftedInput = "A".repeat(BLOCKLEN - (knownBytes.length % BLOCKLEN) - 1);
@@ -100,7 +100,7 @@ function decryptTarget(targetLength, targetblockLength) {
                 }
             }
         }
-        console.log(knownBytes.join(""));
+        var targetMessage = knownBytes.join("");
+        return targetMessage;
     }
-
 }
